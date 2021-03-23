@@ -23,10 +23,10 @@ var (
 		}, []string{"listener_name"})
 )
 
-func init() {
-	prom.MustRegister(listenerAcceptedTotal)
-	prom.MustRegister(listenerClosedTotal)
-}
+// func init() {
+// 	prom.MustRegister(listenerAcceptedTotal)
+// 	prom.MustRegister(listenerClosedTotal)
+// }
 
 // preRegisterListener pre-populates Prometheus labels for the given listener name, to avoid Prometheus missing labels issue.
 func preRegisterListenerMetrics(listenerName string) {

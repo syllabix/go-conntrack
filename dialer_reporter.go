@@ -15,10 +15,10 @@ import (
 type failureReason string
 
 const (
-	failedResolution  = "resolution"
-	failedConnRefused = "refused"
-	failedTimeout     = "timeout"
-	failedUnknown     = "unknown"
+	failedResolution  failureReason = "resolution"
+	failedConnRefused failureReason = "refused"
+	failedTimeout     failureReason = "timeout"
+	failedUnknown     failureReason = "unknown"
 )
 
 var (
@@ -56,10 +56,10 @@ var (
 )
 
 func init() {
-	prom.MustRegister(dialerAttemptedTotal)
-	prom.MustRegister(dialerConnEstablishedTotal)
-	prom.MustRegister(dialerConnFailedTotal)
-	prom.MustRegister(dialerConnClosedTotal)
+	// prom.MustRegister(dialerAttemptedTotal)
+	// prom.MustRegister(dialerConnEstablishedTotal)
+	// prom.MustRegister(dialerConnFailedTotal)
+	// prom.MustRegister(dialerConnClosedTotal)
 }
 
 // preRegisterDialerMetrics pre-populates Prometheus labels for the given dialer name, to avoid Prometheus missing labels issue.
