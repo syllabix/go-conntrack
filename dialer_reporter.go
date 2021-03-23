@@ -5,6 +5,7 @@ package conntrack
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"os"
 	"syscall"
@@ -85,6 +86,15 @@ func reportDialerConnClosed(dialerName string) {
 }
 
 func reportDialerConnFailed(dialerName string, err error) {
+	fmt.Printf("dialer conn failed: %+v\n", err)
+	switch err.(type) {
+	case *net.AddrError:
+	case *net.DNSConfigError:
+	case *net.OpError:
+	case *net.UnknownNetworkError:
+	case *net.InvalidAddrError:
+		//dial tcp: operation was cancelled
+	}
 	if netErr, ok := err.(*net.OpError); ok {
 		switch nestErr := netErr.Err.(type) {
 		case *net.DNSError:
